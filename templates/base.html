@@ -3,7 +3,13 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>{% block title %}My title{% endblock %}</title>
+	
+	<title>
+		{% block title %}
+			My title
+		{% endblock %}
+	</title>
+	
 	<link href="/static/jquery-ui.css" rel="stylesheet">
 	<style>
 	body{
@@ -51,51 +57,27 @@
 </head>
 
 <body>
-{% block body %}
-My body
+	{% block body %}
+		My body
+	{% endblock %}
+
+{% block script %}
+	<script src="/static/jquery.js"></script>
+	<script src="/static/jquery-ui.js"></script>
+	<script src="/static/jquery.dataTables.min.js"></script>
+	<script src="/static/dataTables.jqueryui.min.js"></script>
 {% endblock %}
 
-<script src="/static/jquery.js"></script>
-<script src="/static/jquery-ui.js"></script>
-<script src="/static/jquery.dataTables.min.js"></script>
-<script src="/static/dataTables.jqueryui.min.js"></script>
 <script>
-    $( "#tabs" ).tabs();
-
-    $( "#dialog" ).dialog();
-
-    $( "#dialog-message" ).dialog({
-        modal: true,
-        buttons: {
-          Ok: function() {
-            $( this ).dialog( "close" );
-          }
-        }
-      });    
-    
-	$( "#tooltip" ).tooltip();
+	{% block jquery %}
+		My jQuery
+	{% endblock %}
+</script>
 	
-	// Hover states on the static widgets
-	$( "#dialog-link, #icons li" ).hover(
-		function() {
-			$( this ).addClass( "ui-state-hover" );
-		},
-		function() {
-			$( this ).removeClass( "ui-state-hover" );
-		}
-	);
-	
-	$(document).ready(function() {
-	    $('#example').DataTable( {
-	    	"sDom": '<"top"i>rt<"bottom"lp><"clear">',
-	        "processing": true,
-	        "serverSide": true,
-	        "ajax": "/procs",
-	        "scrollY":        "200px",
-	        "scrollCollapse": true,
-	        "paging":         false        
-	    } );
-	} );
+<script>
+	{% block datatable %}
+		My Datatable
+	{% endblock %}
 </script>
 
 </body>

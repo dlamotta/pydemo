@@ -26,5 +26,7 @@ urlpatterns = [
     #url(r'(.+\.html)$', 'direct_to_template'),
     url(r'^$', views.index, name='index'),
     url(r'^test$', views.test),
-
+    url(r'^dt', views.dt),
+    url(r'^env', views.env),
+    
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
