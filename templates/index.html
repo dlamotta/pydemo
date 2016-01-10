@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="us">
+<head>
+	<meta charset="utf-8">
+	<title>jdemo</title>
+	<link href="/static/jquery-ui.css" rel="stylesheet">
+	<style>
+	body{
+		font: 62.5% "Trebuchet MS", sans-serif;
+		margin: 50px;
+	}
+	.demoHeaders {
+		margin-top: 2em;
+	}
+	#dialog-link {
+		padding: .4em 1em .4em 20px;
+		text-decoration: none;
+		position: relative;
+	}
+	#dialog-link span.ui-icon {
+		margin: 0 5px 0 0;
+		position: absolute;
+		left: .2em;
+		top: 50%;
+		margin-top: -8px;
+	}
+	#icons {
+		margin: 0;
+		padding: 0;
+	}
+	#icons li {
+		margin: 2px;
+		position: relative;
+		padding: 4px 0;
+		cursor: pointer;
+		float: left;
+		list-style: none;
+	}
+	#icons span.ui-icon {
+		float: left;
+		margin: 0 4px;
+	}
+	.fakewindowcontain .ui-widget-overlay {
+		position: absolute;
+	}
+	select {
+		width: 200px;
+	}
+	</style>
+</head>
+<body>
+
+<h2 class="demoHeaders">jdemo</h2>
+
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-1">Env</a></li>
+    <li><a href="#tabs-2">Process</a></li>
+    <li><a href="#tabs-3">File</a></li>
+    <li><a href="#tabs-4">Action</a></li>
+  </ul>
+  <div id="tabs-1">
+
+	
+	
+		<div class="container">
+			<table id="env_table" class="display" cellspacing="0" width="60%">
+			        <thead>
+			            <tr>
+			                <th>Key</th>
+			                <th>Value</th>
+			            </tr>
+			        </thead>
+			</table>
+	    </div>
+			
+  </div>
+  <div id="tabs-2">
+  
+			<table id="proc_table" class="display" cellspacing="0" width="60%">
+			
+			        <thead>
+			            <tr>
+			                <th>Name</th>
+			                <th>Args</th>
+			            	<th>PID</th>
+			                <th>Parent</th>
+			            </tr>
+			        </thead>
+			</table>
+ 
+  </div>
+  <div id="tabs-3">
+
+	<div id="tree" class="aciTree aciTree0" role="tree" tabindex="0" unselectable="on" onselectstart="return false" style="-webkit-user-select: none;"><div>
+	    <br>Sample tree</div><ul role="group" class="aciTreeUl"><li role="presentation" class="aciTreeLi aciTreeInode aciTreeLevel0 aciTreeFirst aciTreeVisible aciTreeOdd"><div tabindex="-1" role="treeitem" aria-selected="false" class="aciTreeLine" aria-level="1" aria-expanded="false"><div class="aciTreeEntry"><span class="aciTreeButton"><span class="aciTreePush"><span></span></span></span><span class="aciTreeItem"><span class="aciTreeText">Folder A</span></span></div></div><ul role="group" class="aciTreeUl" style="display: none;"><li role="presentation" class="aciTreeLi aciTreeLeaf aciTreeLevel1 aciTreeFirst"><div tabindex="-1" role="treeitem" aria-selected="false" class="aciTreeLine" aria-level="2"><div class="aciTreeBranch aciTreeLevel0"><div class="aciTreeEntry"><span class="aciTreeButton"><span class="aciTreePush"><span></span></span></span><span class="aciTreeItem"><span class="aciTreeText">Folder A.1</span></span></div></div></div></li><li role="presentation" class="aciTreeLi aciTreeLeaf aciTreeLevel1"><div tabindex="-1" role="treeitem" aria-selected="false" class="aciTreeLine" aria-level="2"><div class="aciTreeBranch aciTreeLevel0"><div class="aciTreeEntry"><span class="aciTreeButton"><span class="aciTreePush"><span></span></span></span><span class="aciTreeItem"><span class="aciTreeText">Folder A.2</span></span></div></div></div></li><li role="presentation" class="aciTreeLi aciTreeLeaf aciTreeLevel1"><div tabindex="-1" role="treeitem" aria-selected="false" class="aciTreeLine" aria-level="2"><div class="aciTreeBranch aciTreeLevel0"><div class="aciTreeEntry"><span class="aciTreeButton"><span class="aciTreePush"><span></span></span></span><span class="aciTreeItem"><span class="aciTreeText">file a.1</span></span></div></div></div></li><li role="presentation" class="aciTreeLi aciTreeLeaf aciTreeLevel1 aciTreeLast"><div tabindex="-1" role="treeitem" aria-selected="false" class="aciTreeLine" aria-level="2"><div class="aciTreeBranch aciTreeLevel0"><div class="aciTreeEntry"><span class="aciTreeButton"><span class="aciTreePush"><span></span></span></span><span class="aciTreeItem"><span class="aciTreeText">file a.2</span></span></div></div></div></li></ul></li><li role="presentation" class="aciTreeLi aciTreeLeaf aciTreeLevel0 aciTreeVisible aciTreeEven"><div tabindex="-1" role="treeitem" aria-selected="false" class="aciTreeLine" aria-level="1"><div class="aciTreeEntry"><span class="aciTreeButton"><span class="aciTreePush"><span></span></span></span><span class="aciTreeItem"><span class="aciTreeText">Folder B</span></span></div></div></li><li role="presentation" class="aciTreeLi aciTreeInode aciTreeLevel0 aciTreeVisible aciTreeOdd aciTreeSelected aciTreeFocus"><div tabindex="-1" role="treeitem" aria-selected="true" class="aciTreeLine" aria-level="1" aria-expanded="false"><div class="aciTreeEntry"><span class="aciTreeButton"><span class="aciTreePush"><span></span></span></span><span class="aciTreeItem"><span class="aciTreeText">Folder C</span></span></div></div><ul role="group" class="aciTreeUl" style="display: none;"><li role="presentation" class="aciTreeLi aciTreeInode aciTreeLevel1 aciTreeFirst"><div tabindex="-1" role="treeitem" aria-selected="false" class="aciTreeLine" aria-level="2" aria-expanded="false"><div class="aciTreeBranch aciTreeLevel0"><div class="aciTreeEntry"><span class="aciTreeButton"><span class="aciTreePush"><span></span></span></span><span class="aciTreeItem"><span class="aciTreeText">Folder C.1</span></span></div></div></div><ul role="group" class="aciTreeUl" style="display: none;"><li role="presentation" class="aciTreeLi aciTreeLeaf aciTreeLevel2 aciTreeFirst"><div tabindex="-1" role="treeitem" aria-selected="false" class="aciTreeLine" aria-level="3"><div class="aciTreeBranch aciTreeLevel0"><div class="aciTreeBranch aciTreeLevel1"><div class="aciTreeEntry"><span class="aciTreeButton"><span class="aciTreePush"><span></span></span></span><span class="aciTreeItem"><span class="aciTreeText">Folder C.1.1</span></span></div></div></div></div></li><li role="presentation" class="aciTreeLi aciTreeLeaf aciTreeLevel2"><div tabindex="-1" role="treeitem" aria-selected="false" class="aciTreeLine" aria-level="3"><div class="aciTreeBranch aciTreeLevel0"><div class="aciTreeBranch aciTreeLevel1"><div class="aciTreeEntry"><span class="aciTreeButton"><span class="aciTreePush"><span></span></span></span><span class="aciTreeItem"><span class="aciTreeText">Folder C.1.2</span></span></div></div></div></div></li><li role="presentation" class="aciTreeLi aciTreeLeaf aciTreeLevel2 aciTreeLast"><div tabindex="-1" role="treeitem" aria-selected="false" class="aciTreeLine" aria-level="3"><div class="aciTreeBranch aciTreeLevel0"><div class="aciTreeBranch aciTreeLevel1"><div class="aciTreeEntry"><span class="aciTreeButton"><span class="aciTreePush"><span></span></span></span><span class="aciTreeItem"><span class="aciTreeText">file c.1.1</span></span></div></div></div></div></li></ul></li><li role="presentation" class="aciTreeLi aciTreeLeaf aciTreeLevel1 aciTreeLast"><div tabindex="-1" role="treeitem" aria-selected="false" class="aciTreeLine" aria-level="2"><div class="aciTreeBranch aciTreeLevel0"><div class="aciTreeEntry"><span class="aciTreeButton"><span class="aciTreePush"><span></span></span></span><span class="aciTreeItem"><span class="aciTreeText">file c.1</span></span></div></div></div></li></ul></li><li role="presentation" class="aciTreeLi aciTreeLeaf aciTreeLevel0 aciTreeVisible aciTreeEven"><div tabindex="-1" role="treeitem" aria-selected="false" class="aciTreeLine" aria-level="1"><div class="aciTreeEntry"><span class="aciTreeButton"><span class="aciTreePush"><span></span></span></span><span class="aciTreeItem"><span class="aciTreeText">file a</span></span></div></div></li><li role="presentation" class="aciTreeLi aciTreeLeaf aciTreeLevel0 aciTreeVisible aciTreeOdd"><div tabindex="-1" role="treeitem" aria-selected="false" class="aciTreeLine" aria-level="1"><div class="aciTreeEntry"><span class="aciTreeButton"><span class="aciTreePush"><span></span></span></span><span class="aciTreeItem"><span class="aciTreeText">file b</span></span></div></div></li><li role="presentation" class="aciTreeLi aciTreeLeaf aciTreeLevel0 aciTreeLast aciTreeVisible aciTreeEven"><div tabindex="-1" role="treeitem" aria-selected="false" class="aciTreeLine" aria-level="1"><div class="aciTreeEntry"><span class="aciTreeButton"><span class="aciTreePush"><span></span></span></span><span class="aciTreeItem"><span class="aciTreeText">file c</span></span></div></div></li></ul></div>
+	    
+	<div class="log">Tree Log... <a class="clear_log" style="font-size:10px" href="#" title="Clear the LOG" target="_blank">clear log</a>
+    <div><p>blurred [tree]</p><p>focus [7]</p><p>blur [6]</p><p>beforefocus [7]</p><p>selected [7]</p><p>deselected [6]</p><p>beforeselect [7]</p><p>focus [6]</p><p>beforefocus [6]</p><p>selected [6]</p><p>beforeselect [6]</p><p>focused [tree]</p><p>init [tree]</p><p>loaded [tree]</p><p>appended [8]</p><p>added [11]</p><p>added [10]</p><p>added [9]</p><p>beforeappend [8]</p><p>appended [7]</p><p>added [12]</p><p>added [8]</p><p>appended [1]</p><p>added [5]</p><p>added [4]</p><p>added [3]</p><p>added [2]</p><p>beforeappend [7]</p><p>beforeappend [1]</p><p>appended [tree]</p><p>added [15]</p><p>added [14]</p><p>added [13]</p><p>added [7]</p><p>added [6]</p><p>added [1]</p><p>beforeappend [tree]</p><p>beforeload [tree]</p></div></div>
+
+  </div>
+  <div id="tabs-4">
+  	<ul>
+		<li>suicide</li>
+		<li>kill process</li>
+		<li>simulate hang</li>
+		<li>simulate load</li>
+		<li>sumulate file IO</li>
+	</ul>  
+  </div>
+
+</div>
+
+<!-- multi-line comment -->
+
+<div id="dialog-message" title="Intro">
+  <p>
+    <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+		<p>A simple webapp based on the <a href="https://github.com/openshift/django-ex">Django Quickstart</a> with a jQuery front-end.</p>
+  </p>
+  <p>
+    <a href="https://github.com/nnachefski/pydemo.git">https://github.com/nnachefski/pydemo.git</a>
+  </p>
+</div>
+	
+<!-- hide all this -->
+<div style="display: none">
+
+</div>
+
+<script src="/static/jquery.js"></script>
+<script src="/static/jquery-ui.js"></script>
+<script src="/static/jquery.dataTables.min.js"></script>
+<script src="/static/dataTables.jqueryui.min.js"></script>
+<script>
+	$( "#accordion" ).accordion();
+
+    $( "#tabs" ).tabs();
+
+    $( "#dialog" ).dialog();
+
+    $( "#dialog-message" ).dialog({
+        modal: true,
+        buttons: {
+          Ok: function() {
+            $( this ).dialog( "close" );
+          }
+        }
+      });    
+    
+	$( "#tooltip" ).tooltip();
+	
+	// Hover states on the static widgets
+	$( "#dialog-link, #icons li" ).hover(
+		function() {
+			$( this ).addClass( "ui-state-hover" );
+		},
+		function() {
+			$( this ).removeClass( "ui-state-hover" );
+		}
+	);
+	
+	$(document).ready(function() {
+	    $('#example').DataTable( {
+	    	"sDom": '<"top"i>rt<"bottom"lp><"clear">',
+	        "processing": true,
+	        "serverSide": true,
+	        "ajax": "/static/procs",
+	        "scrollY":        "200px",
+	        "scrollCollapse": true,
+	        "paging":         false        
+	    } );
+	} );
+</script>
+
+</body>
+</html>
