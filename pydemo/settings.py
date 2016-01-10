@@ -29,7 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
                  #os.environ['OPENSHIFT_APP_DNS'], socket.gethostname(),
-                 '*',
+                 #'*',
 ]
 
 
@@ -128,3 +128,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+#print (os.path.join(BASE_DIR, "static"))
