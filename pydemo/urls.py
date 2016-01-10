@@ -27,4 +27,4 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^test$', views.test),
 
-]# + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
