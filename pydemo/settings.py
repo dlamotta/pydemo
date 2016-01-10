@@ -25,10 +25,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'tamdwknnwuu+o4sx$m_33oou*=pqm7xx9_s)bm9aynj7wn0_su'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
-                 os.environ['OPENSHIFT_APP_DNS'], socket.gethostname(),
+                 #os.environ['OPENSHIFT_APP_DNS'], socket.gethostname(),
                  '*',
 ]
 
