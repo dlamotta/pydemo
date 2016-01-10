@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.conf import settings
 
 from . import database
-from .models import PageView
+from pydemo.models import PageView
 
 # Create your views here.
 

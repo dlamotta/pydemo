@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import PageView
+from pydemo.models import PageView
 
 # Register your models here.
 

@@ -6,6 +6,6 @@ urlpatterns = [
     # url(r'^$', 'project.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^$', 'welcome.views.index'),
+    url(r'^$', 'pydemo.views.index'),
     url(r'^admin/', include(admin.site.urls)),
 ]
