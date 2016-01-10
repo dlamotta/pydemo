@@ -4,11 +4,8 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 
-
-# Create your views here.
-
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'index.html', {'name': settings.PROJECT_NAME })
 
 def test(request):
     return HttpResponse("Testing...")

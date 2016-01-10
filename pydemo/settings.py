@@ -129,5 +129,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
+PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
+PROJECT_NAME = os.path.basename(PROJECT_ROOT)
+
 #print (os.path.join(BASE_DIR, 'pydemo/static'))
+#print (PROJECT_ROOT, PROJECT_NAME)
 
