@@ -68,5 +68,8 @@ def action(request):
     if request.method == 'GET':
         if 'action' in request.GET and 'seconds' in request.GET:
             msg = "Simulating '%s' for '%s' seconds"%(request.GET['action'], request.GET['seconds'])
+            #if request.GET['action'] == 'hang':
+                
+            
     return HttpResponse(msg)
 

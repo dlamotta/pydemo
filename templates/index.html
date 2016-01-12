@@ -51,14 +51,15 @@
 		    	<input type="radio" value="load" id="load" name="radio" checked="checked"><label for="load">Load</label>
 		    	<input type="radio" value="fileio" id="fileio" name="radio"><label for="fileio">File IO</label>
 		    	<td>&nbsp;</td>
-		    	<input type="number" min="1" max="30" id="seconds" name="seconds" value="15"><label for="seconds">  Seconds</label>
-		    	<div style="width:20%" id="progressbar"></div>
+		    	<input type="number" min="1" max="30" id="seconds" name="seconds" value="15"><label for="seconds">  Seconds  </label>
 		    	<td>&nbsp;</td>
-		    	
+		    	<div id="results"></div> 
+		    	<p></p>
+		    	<div style="width:20%" id="progressbar"></div>
 		    	<p></p>
 		  	</div>
+		  	
 		  	<input type="submit" name="action" id="action" value="Go">
-	    	<div id="results"></div>	  	
 		</form>
 	  </div>
 	
@@ -94,14 +95,33 @@
 		var posting = $.get( "action", { action: act, seconds: secs }
 		, function(data) { 
         	$('#results').html(data);
+        	
+			var tick_interval = 1;
+			var tick_increment = 100/secs;
+			var tick_function = function() {
+			    var value = $("#progressbar").progressbar("option", "value");
+			    value += tick_increment;
+			    $("#progressbar").progressbar("option", "value", value);
+			    if (value < 100) {
+			        window.setTimeout(tick_function, tick_interval * 1000);
+			    } else {
+			        $('#results').html("Done").delay( 800 ).fadeOut( 400 );
+			        $('#progressbar').progressbar('option', 'value', 0);
+			        
+			    }
+			};
+			window.setTimeout(tick_function, tick_interval * 1000);        	
+        	
 	    }); 
 		 
 	});
 	
+	//$( "#results" ).toggle( "highlight" );
+	
     $( "#progressbar" ).progressbar({
       value: 0
-    });	
-
+    });
+    
     $( "#radio" ).buttonset();
 
     $( "#tabs" ).tabs();
