@@ -16,6 +16,10 @@ def dt(request):
     html = "<html><body>%s</body></html>" % now
     return HttpResponse(html)
 
+def none(request):
+    html = "<html><body>Sorry, nothing found for that URL</body></html>"
+    return HttpResponse(html)
+
 def index(request):
     return render(request, 'index.html', {'name': settings.PROJECT_NAME })
 
@@ -59,5 +63,10 @@ def proc(request):
     
     return JsonResponse(ret_dict)
 
-
+def action(request):
+    msg = "Failed"
+    if request.method == 'GET':
+        if 'action' in request.GET and 'seconds' in request.GET:
+            msg = "Simulating '%s' for '%s' seconds"%(request.GET['action'], request.GET['seconds'])
+    return HttpResponse(msg)
 

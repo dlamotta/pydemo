@@ -8,7 +8,7 @@
 	    <li><a href="#tabs-1">Env</a></li>
 	    <li><a href="#tabs-2">Process</a></li>
 	    <li><a href="#tabs-3">File</a></li>
-	    <li><a href="#tabs-4">Action</a></li>
+	    <li><a href="#tabs-4">Test</a></li>
 	  </ul>
 	  <div id="tabs-1">
 			<table id="env" class="display" cellspacing="0" width="60%" style="white-space: nowrap;">
@@ -20,8 +20,8 @@
 			        </thead>
 			</table>
 	  </div>
-	  <div id="tabs-2">
 	  
+	  <div id="tabs-2">
 				<table id="proc" class="display" cellspacing="0" width="60%" style="white-space: nowrap;">
 				
 				        <thead>
@@ -34,7 +34,6 @@
 				            </tr>
 				        </thead>
 				</table>
-	 
 	  </div>
 	  <div id="tabs-3">
 	
@@ -46,14 +45,21 @@
 	
 	  </div>
 	  <div id="tabs-4">
-	  	<ul>
-			<li>suicide</li>
-			<li>kill process</li>
-			<li>simulate hang</li>
-			<li>simulate load</li>
-			<li>sumulate file io<li>
-			<li>nmap</li>
-		</ul>  
+		<form>
+		  	<div id="radio">
+		    	<input type="radio" value="hang" id="hang" name="radio"><label for="hang">Hang</label>
+		    	<input type="radio" value="load" id="load" name="radio" checked="checked"><label for="load">Load</label>
+		    	<input type="radio" value="file" id="file" name="radio"><label for="file">File IO</label>
+		    	<td>&nbsp;</td>
+		    	<input type="number" min="1" max="30" id="seconds" name="seconds" value="15"><label for="seconds">  Seconds</label>
+		    	<div style="width:20%" id="progressbar"></div>
+		    	<td>&nbsp;</td>
+		    	
+		    	<p></p>
+		  	</div>
+		  	<input type="submit" name="action" id="action" value="Go">
+	    	<div id="results"></div>	  	
+		</form>
 	  </div>
 	
 	</div>
@@ -78,6 +84,26 @@
 
 
 {% block jquery %}
+	$( "#action" ).click(function() {
+		event.preventDefault();
+		 
+	    var act = $("input[name='radio']:checked").val();
+		var secs = $( "#seconds" ).val();
+		
+		// Send the data using get
+		var posting = $.get( "action", { action: act, seconds: secs }
+		, function(data) { 
+        	$('#results').html(data);
+	    }); 
+		 
+	});
+	
+    $( "#progressbar" ).progressbar({
+      value: 15
+    });	
+
+    $( "#radio" ).buttonset();
+
     $( "#tabs" ).tabs();
 
     $( "#dialog" ).dialog();

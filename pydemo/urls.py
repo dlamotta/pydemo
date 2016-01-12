@@ -29,6 +29,8 @@ urlpatterns = [
     url(r'^dt', views.dt),
     url(r'^env', views.env),
     url(r'^proc', views.proc),
-   
+    url(r'^action', views.action),
+    url(r'^.+', views.none),
+
     
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
