@@ -11,7 +11,7 @@
 	    <li><a href="#tabs-4">Action</a></li>
 	  </ul>
 	  <div id="tabs-1">
-			<table id="env" class="display" cellspacing="0" width="60%" role="grid">
+			<table id="env" class="display" cellspacing="0" width="60%" style="white-space: nowrap;">
 			        <thead>
 			            <tr>
 			                <th>Key</th>
@@ -22,14 +22,15 @@
 	  </div>
 	  <div id="tabs-2">
 	  
-				<table id="proc_table" class="display" cellspacing="0" width="60%">
+				<table id="proc" class="display" cellspacing="0" width="60%" style="white-space: nowrap;">
 				
 				        <thead>
 				            <tr>
 				                <th>Name</th>
-				                <th>Args</th>
+				                <th>User</th>
 				            	<th>PID</th>
 				                <th>Parent</th>
+				                <th>Args</th>
 				            </tr>
 				        </thead>
 				</table>
@@ -116,12 +117,31 @@
 	        "bJQueryUI": true,
 		    "bLengthChange": false,
 		    "bFilter": false,
-		    "bSort": true,
+		    "bSort": false,
 		    "bInfo": false,
 		    "bAutoWidth": false,
 		    "bProcessing": true,
 		    "iDisplayLength": 20,	        
 	    } );
+	    
+	    $('#proc').DataTable( {
+	    	"sDom": '<"top"i>rt<"bottom"lp><"clear">',
+	        "processing": true,
+	        "serverSide": true,
+	        "ajax": "/proc",
+	        "scrollY":        "400px",
+	        "scrollCollapse": false,
+	        "paging":         false     ,
+	        "bJQueryUI": true,
+		    "bLengthChange": false,
+		    "bFilter": false,
+		    "bSort": false,
+		    "bInfo": false,
+		    "bAutoWidth": false,
+		    "bProcessing": true,
+		    "iDisplayLength": 20,	 
+	    } );	    
+	    
 	} );
 {% endblock %}
 
