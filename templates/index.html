@@ -49,7 +49,7 @@
 		  	<div id="radio">
 		    	<input type="radio" value="hang" id="hang" name="radio"><label for="hang">Hang</label>
 		    	<input type="radio" value="load" id="load" name="radio" checked="checked"><label for="load">Load</label>
-		    	<input type="radio" value="file" id="file" name="radio"><label for="file">File IO</label>
+		    	<input type="radio" value="fileio" id="fileio" name="radio"><label for="fileio">File IO</label>
 		    	<td>&nbsp;</td>
 		    	<input type="number" min="1" max="30" id="seconds" name="seconds" value="15"><label for="seconds">  Seconds</label>
 		    	<div style="width:20%" id="progressbar"></div>
@@ -99,7 +99,7 @@
 	});
 	
     $( "#progressbar" ).progressbar({
-      value: 15
+      value: 0
     });	
 
     $( "#radio" ).buttonset();
