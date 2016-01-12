@@ -1,7 +1,7 @@
 import os
 from django.shortcuts import render
 from django.conf import settings
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import get_object_or_404, render
 import datetime
 from django.http import JsonResponse
@@ -18,7 +18,7 @@ def dt(request):
 
 def none(request):
     html = "<html><body>Sorry, nothing found for that URL</body></html>"
-    return HttpResponse(html)
+    return HttpResponseNotFound(html)
 
 def index(request):
     return render(request, 'index.html', {'name': settings.PROJECT_NAME })

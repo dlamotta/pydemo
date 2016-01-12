@@ -132,6 +132,7 @@
         modal: true,
         buttons: {
           Ok: function() {
+            $( "#tabs" ).show();
             $( this ).dialog( "close" );
           }
         }
@@ -148,6 +149,8 @@
 			$( this ).removeClass( "ui-state-hover" );
 		}
 	);
+	
+	$( "#tabs" ).hide();
 {% endblock %}
 
 {% block datatable %}
