@@ -52,8 +52,6 @@
 		    	<td>&nbsp;</td>
 		    	<input type="number" min="1" max="30" id="seconds" name="seconds" value="15"><label for="seconds">  Seconds  </label>
 		    	<td>&nbsp;</td>
-		    	<div id="results"></div> 
-		    	<p></p>
 		    	<div style="width:20%" id="progressbar"></div>
 		    	<p></p>
 		  	</div>
@@ -95,7 +93,7 @@
 		// Send the data using get
 		var posting = $.get( "action", { action: act, seconds: secs }
 		, function(data) { 
-        	$('#results').html(data);
+        	$.growl({ title: "Action", message: data });
         	
 			var tick_interval = 1;
 			var tick_increment = 100/secs;
@@ -106,9 +104,8 @@
 			    if (value <= 100) {
 			        window.setTimeout(tick_function, tick_interval * 1000);
 			    } else {
-			        $('#results').html("Done").delay( 800 ).fadeOut( 400 );
+			        $.growl({ title: "Complete", message: "All done" });
 			        $('#progressbar').progressbar('option', 'value', 0);
-			        //$('#results').html("");
 			    }
 			};
 			window.setTimeout(tick_function, tick_interval * 1000);        	

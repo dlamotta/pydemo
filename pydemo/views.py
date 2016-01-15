@@ -1,4 +1,4 @@
-import os
+import os, psutil
 from django.shortcuts import render
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseNotFound
@@ -79,7 +79,8 @@ def action(request):
     if request.method == 'GET':
         if 'action' in request.GET and 'seconds' in request.GET:
             msg = "Simulating '%s' for '%s' seconds"%(request.GET['action'], request.GET['seconds'])
-            #if request.GET['action'] == 'hang':
+            if request.GET['action'] == 'hang':
+                
                 
             
     return HttpResponse(msg)
