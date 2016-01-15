@@ -65,7 +65,8 @@ def proc(request):
 
 def file(request):
     html = '<ul>'
-    for root, dirs, files in os.walk('/home/nick/workspace/pydemo'):
+    for root, dirs, files in os.walk('/'):
+        
         for dir in dirs:
             html = html + "<ul>%s</ul>"%(dir)
         for file in files:

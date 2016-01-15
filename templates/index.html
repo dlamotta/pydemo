@@ -41,10 +41,11 @@
       	
       </div>
       
+      </div>
 		
 	  <div id="tabs-4">
 		<form>
-		  	<div id="radio">
+		  	<div id="radioo">
 		    	<input type="radio" value="hang" id="hang" name="radio"><label for="hang">Hang</label>
 		    	<input type="radio" value="load" id="load" name="radio" checked="checked"><label for="load">Load</label>
 		    	<input type="radio" value="fileio" id="fileio" name="radio"><label for="fileio">File IO</label>
@@ -62,19 +63,7 @@
 	  </div>
 	
 	</div>
-	
-	<!-- multi-line comment -->
-	
-	<div id="dialog-message" title="Hello World">
-	  <p>
-	    <span style="float:left; margin:0 7px 50px 0;"></span>
-			<p>A simple web app based on the <a href="https://github.com/openshift/django-ex">Django Example</a></p>
-	  </p>
-	  <p>
-	    <a href="https://github.com/nnachefski/pydemo.git">https://github.com/nnachefski/pydemo.git</a>
-	  </p>
-	</div>
-		
+
 	<!-- hide all this -->
 	<div style="display: none">
 	
@@ -83,7 +72,19 @@
 
 
 {% block jquery %}
-	$( "#tabs" ).hide();
+	//$( "#tabs" ).hide();
+	
+    $( "#dialog" ).dialog();
+
+    $( "#dialog-message" ).dialog({
+        modal: true,
+        buttons: {
+          Ok: function() {
+            $( "#tabs" ).show();
+            $( this ).dialog( "close" );
+          }
+        }
+      });	
 
 	$( "#action" ).click(function() {
 		event.preventDefault();
@@ -122,23 +123,11 @@
       value: 0
     });
     
-    $( "#radio" ).buttonset();
+    $( "#radioo" ).buttonset();
 
     $( "#tabs" ).tabs();
 
-    $( "#dialog" ).dialog();
-
-    $( "#dialog-message" ).dialog({
-        modal: true,
-        buttons: {
-          Ok: function() {
-            $( "#tabs" ).show();
-            $( this ).dialog( "close" );
-          }
-        }
-      });
-
-	  $.growl({ title: "Growl", message: "The kitten is awake!" });
+	$.growl({ title: "welcome", message: "A simple web app based on python/django" });
 
 {% endblock %}
 
