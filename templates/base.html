@@ -11,6 +11,7 @@
 	</title>
 	
 	<link href="/static/jquery-ui.css" rel="stylesheet">
+	<link href="/static/jquery.growl.css" rel="stylesheet" type="text/css" />
 	<style>
 	body{
 		font: 62.5% "Trebuchet MS", sans-serif;
@@ -66,7 +67,15 @@
 	<script src="/static/jquery-ui.js"></script>
 	<script src="/static/jquery.dataTables.min.js"></script>
 	<script src="/static/dataTables.jqueryui.min.js"></script>
+	<script src="/static/jstree.min.js"></script>
+	<script src="/static/jquery.growl.js" type="text/javascript"></script>
 {% endblock %}
+
+<script>
+	{% block datatable %}
+		My Datatable
+	{% endblock %}
+</script>
 
 <script>
 	{% block jquery %}
@@ -74,11 +83,7 @@
 	{% endblock %}
 </script>
 	
-<script>
-	{% block datatable %}
-		My Datatable
-	{% endblock %}
-</script>
+
 
 </body>
 

@@ -63,6 +63,16 @@ def proc(request):
     
     return JsonResponse(ret_dict)
 
+def file(request):
+    html = '<ul>'
+    for root, dirs, files in os.walk('/home/nick/workspace/pydemo'):
+        for dir in dirs:
+            html = html + "<ul>%s</ul>"%(dir)
+        for file in files:
+            html = html + "<li>%s</li>"%(file)
+    html = html + '</ul>'
+    return HttpResponse(html)
+
 def action(request):
     msg = "Failed"
     if request.method == 'GET':
@@ -72,4 +82,6 @@ def action(request):
                 
             
     return HttpResponse(msg)
+
+
 

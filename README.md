@@ -2,7 +2,9 @@
 
 This is a [Django](http://www.djangoproject.com) project with JQuery front-end that you can use to demo [OpenShift](https://github.com/openshift/origin) cluster.
 
-This app provides various routines to assist in demo'ing [deployment types](https://github.com/openshift/origin/tree/master/examples/deployment).
+This app provides:
+	- a view into the container that its running in
+	- various routines to assist in demo'ing [deployment types](https://github.com/openshift/origin/tree/master/examples/deployment)
 
 
 ## Looking for help
