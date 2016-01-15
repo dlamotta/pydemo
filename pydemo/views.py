@@ -39,7 +39,6 @@ def env(request):
     
     return JsonResponse(ret_dict)
 
-
 def proc(request):
     ret_dict = {
                 "draw": 1,
@@ -65,12 +64,9 @@ def proc(request):
 
 def file(request):
     html = '<ul>'
-    for root, dirs, files in os.walk('/'):
-        
-        for dir in dirs:
-            html = html + "<ul>%s</ul>"%(dir)
-        for file in files:
-            html = html + "<li>%s</li>"%(file)
+    for d in os.listdir('.'):
+        html = html + "<ul>%s</ul>"%(d)
+
     html = html + '</ul>'
     return HttpResponse(html)
 
@@ -80,8 +76,9 @@ def action(request):
         if 'action' in request.GET and 'seconds' in request.GET:
             msg = "Simulating '%s' for '%s' seconds"%(request.GET['action'], request.GET['seconds'])
             if request.GET['action'] == 'hang':
-                msg = os.popen("kill -SIGSTOP 1").read()
-            
+                out = os.popen("kill -s SIGSTOP 1").read()
+                print (out)
+                
     return HttpResponse(msg)
 
 

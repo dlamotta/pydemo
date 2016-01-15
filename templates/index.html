@@ -93,7 +93,7 @@
 		// Send the data using get
 		var posting = $.get( "action", { action: act, seconds: secs }
 		, function(data) { 
-        	$.growl({ title: "Action", message: data });
+        	$.growl({ title: "Test", message: data });
         	
 			var tick_interval = 1;
 			var tick_increment = 100/secs;
@@ -124,7 +124,7 @@
 
     $( "#tabs" ).tabs();
 
-	$.growl({ title: "welcome", message: "A simple web app based on python/django" });
+	$.growl({ title: "welcome", message: "A simple webapp on python/django" });
 
 {% endblock %}
 
