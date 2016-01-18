@@ -103,6 +103,7 @@
 			    $("#progressbar").progressbar("option", "value", value);
 			    if (value <= 100) {
 			        window.setTimeout(tick_function, tick_interval * 1000);
+			        
 			    } else {
 			        $.growl({ title: "Complete", message: "All done" });
 			        $('#progressbar').progressbar('option', 'value', 0);
