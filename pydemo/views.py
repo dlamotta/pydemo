@@ -1,12 +1,17 @@
-import os
-from django.shortcuts import render
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseNotFound
-from django.shortcuts import get_object_or_404, render
-import datetime
+from django.shortcuts import render
+import datetime, os
 from django.http import JsonResponse
 from operator import itemgetter
 
+def subdirs(path):
+    for d in filter(os.path.isdir, os.listdir(path)):
+        yield d
+        
+def files(path):
+    for f in filter(os.path.isfile, os.listdir(path)):
+        yield f
 
 def test(request):
     return HttpResponse("Testing...")
@@ -64,10 +69,15 @@ def proc(request):
 
 def file(request):
     html = '<ul>'
-    for d in os.listdir('.'):
+    for d in subdirs('.'):
         html = html + "<ul>%s</ul>"%(d)
-
+        for f in files('./'+d):
+            html = html + "<li>%s</li>"%(f)
     html = html + '</ul>'
+
+    for f in files('./'+d):
+        html = html + "<li>%s</li>"%(f)
+        
     return HttpResponse(html)
 
 def action(request):
