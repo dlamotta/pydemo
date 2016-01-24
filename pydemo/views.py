@@ -37,7 +37,7 @@ def env(request):
                 }
     
     for key, value in os.environ.items():
-        ret_dict['data'].append((key, value))
+        ret_dict['data'].append((key[:30], value[:80]))
         ret_dict['recordsTotal'] += 1
     
     ret_dict['data'] = sorted(ret_dict['data'])

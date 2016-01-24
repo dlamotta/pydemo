@@ -121,6 +121,9 @@
       value: 0
     });
     
+    $("#progressbar").css({ 'background': 'LightRed' });
+    $("#progressbar > div").css({ 'background': 'Orange' });    
+    
     $( "#radioo" ).buttonset();
 
     $( "#tabs" ).tabs();
@@ -144,7 +147,7 @@
 		    "bFilter": false,
 		    "bSort": false,
 		    "bInfo": false,
-		    "bAutoWidth": false,
+		    "bAutoWidth": true,
 		    "bProcessing": true,
 		    "iDisplayLength": 20,	        
 	    } );
@@ -162,7 +165,7 @@
 		    "bFilter": false,
 		    "bSort": false,
 		    "bInfo": false,
-		    "bAutoWidth": false,
+		    "bAutoWidth": true,
 		    "bProcessing": true,
 		    "iDisplayLength": 20,	 
 	    } );
