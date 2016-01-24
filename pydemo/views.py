@@ -68,16 +68,18 @@ def proc(request):
     return JsonResponse(ret_dict)
 
 def file(request):
+    p = '.'
     html = '<ul>'
-    for d in subdirs('.'):
+    for d in subdirs(p):
         html = html + "<ul>%s</ul>"%(d)
-        for f in files('./'+d):
+        for f in files(p+'/'+d):
             html = html + "<li>%s</li>"%(f)
+            
+    for f in files(p+'/'+d):
+        html = html + "<li>%s</li>"%(f)
+                    
     html = html + '</ul>'
 
-    for f in files('./'+d):
-        html = html + "<li>%s</li>"%(f)
-        
     return HttpResponse(html)
 
 def action(request):
