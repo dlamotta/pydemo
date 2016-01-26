@@ -100,7 +100,6 @@ def action(request):
                 print (out)
             elif request.GET['action'] == 'fileio':
                 pass
-                pass
                 
     return HttpResponse(msg+"\n"+out)
 
