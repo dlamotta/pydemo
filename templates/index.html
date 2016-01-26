@@ -92,26 +92,29 @@
 		
 		// Send the data using get
 		var posting = $.get( "action", { action: act, seconds: secs }
-		, function(data) { 
-        	$.growl({ title: "Test", message: data });
-        	
-			var tick_interval = 1;
-			var tick_increment = 100/secs;
-			var tick_function = function() {
-			    var value = $("#progressbar").progressbar("option", "value");
-			    value += tick_increment;
-			    $("#progressbar").progressbar("option", "value", value);
-			    if (value <= 100) {
-			        window.setTimeout(tick_function, tick_interval * 1000);
-			        
-			    } else {
-			        $.growl({ title: "Complete", message: "All done" });
-			        $('#progressbar').progressbar('option', 'value', 0);
-			    }
-			};
-			window.setTimeout(tick_function, tick_interval * 1000);        	
-        	
-	    }); 
+							, function(data) { 
+					        	$.growl({ title: "Test", message: data });
+					        	
+								var tick_interval = 1;
+								var tick_increment = 100/secs;
+								var tick_function = function() {
+								    var value = $("#progressbar").progressbar("option", "value");
+								    value += tick_increment;
+								    $("#progressbar").progressbar("option", "value", value);
+								    if (value <= 100) {
+								        window.setTimeout(tick_function, tick_interval * 1000);
+								        
+								    } else {
+								        $.growl({ title: "Complete", message: "All done" });
+								        $('#progressbar').progressbar('option', 'value', 0);
+								    }
+								};
+								window.setTimeout(tick_function, tick_interval * 1000);        	
+					        	
+						    }).fail(function(data) { 
+						    	$.growl({ title: "Error", message: data.toSource() });
+
+}); 
 		 
 	});
 	

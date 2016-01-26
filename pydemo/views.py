@@ -4,6 +4,7 @@ from django.shortcuts import render
 import datetime, os
 from django.http import JsonResponse
 from operator import itemgetter
+from time import sleep
 
 def subdirs(path):
     for d in filter(os.path.isdir, os.listdir(path)):
@@ -71,7 +72,7 @@ def file(request):
     p = '.'
     html = '<ul>'
     for d in subdirs(p):
-        html = html + "<ul>%s</ul>"%(d)
+        html = html + "<li>%s</li>"%(d)
         for f in files(p+'/'+d):
             html = html + "<li>%s</li>"%(f)
             
@@ -84,14 +85,24 @@ def file(request):
 
 def action(request):
     msg = "Failed"
+    out = ' '
     if request.method == 'GET':
         if 'action' in request.GET and 'seconds' in request.GET:
             msg = "Simulating '%s' for '%s' seconds"%(request.GET['action'], request.GET['seconds'])
             if request.GET['action'] == 'hang':
-                out = os.popen("kill -s SIGSTOP 1").read()
+                out = out + os.popen("kill -s STOP 1").read()
                 print (out)
+                sleep(int(request.GET['seconds']))
+                out = out + os.popen("kill -s CONT 1").read()
+                print (out)
+            elif request.GET['action'] == 'kill':
+                out = out + os.popen("kill 1").read()
+                print (out)
+            elif request.GET['action'] == 'fileio':
+                pass
+                pass
                 
-    return HttpResponse(msg)
+    return HttpResponse(msg+"\n"+out)
 
 
 
