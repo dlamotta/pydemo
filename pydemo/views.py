@@ -92,7 +92,7 @@ def action(request):
             if request.GET['action'] == 'hang':
                 out = out + os.popen("kill -s STOP 1").read()
                 print (out)
-                sleep(int(request.GET['seconds']))
+                # sleep(int(request.GET['seconds']))
                 out = out + os.popen("kill -s CONT 1").read()
                 print (out)
             elif request.GET['action'] == 'kill':
