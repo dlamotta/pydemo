@@ -5,6 +5,7 @@ import datetime, os
 from django.http import JsonResponse
 from operator import itemgetter
 from time import sleep
+from threading import Timer
 
 def subdirs(path):
     for d in filter(os.path.isdir, os.listdir(path)):
@@ -84,22 +85,34 @@ def file(request):
     return HttpResponse(html)
 
 def action(request):
-    msg = "Failed"
     out = ' '
+    msg = ' '
     if request.method == 'GET':
         if 'action' in request.GET and 'seconds' in request.GET:
-            msg = "Simulating '%s' for '%s' seconds"%(request.GET['action'], request.GET['seconds'])
+            msg = "Processed '%s' for '%s' seconds"%(request.GET['action'], request.GET['seconds'])
             if request.GET['action'] == 'hang':
                 out = out + os.popen("kill -s STOP 1").read()
                 print (out)
-                # sleep(int(request.GET['seconds']))
+                sleep(int(request.GET['seconds']))
                 out = out + os.popen("kill -s CONT 1").read()
                 print (out)
+                
             elif request.GET['action'] == 'kill':
                 out = out + os.popen("kill 1").read()
                 print (out)
+                
             elif request.GET['action'] == 'fileio':
                 pass
+            
+            elif request.GET['action'] == 'load':
+                def load():
+                    while 1:
+                        x = 987239478234879 * 98723947823947
+
+                t = Timer(int(request.GET['seconds']), load)
+                t.start() # after 30 seconds, "hello, world" will be printed
+                
+                
                 
     return HttpResponse(msg+"\n"+out)
 
