@@ -105,14 +105,12 @@ def action(request):
                 pass
             
             elif request.GET['action'] == 'load':
-                def load():
-                    while 1:
+                endTime = datetime.datetime.now() + datetime.timedelta(seconds=int(request.GET['seconds']))
+                while True:
+                    if datetime.datetime.now() >= endTime:
+                        break
+                    else:
                         x = 987239478234879 * 98723947823947
-
-                t = Timer(int(request.GET['seconds']), load)
-                t.start() # after 30 seconds, "hello, world" will be printed
-                
-                
                 
     return HttpResponse(msg+"\n"+out)
 

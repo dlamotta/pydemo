@@ -92,10 +92,12 @@
 	    var act = $("input[name='radio']:checked").val();
 		var secs = $( "#seconds" ).val();
 		
+		$.growl({ title: "Performing", message: act+" for "+secs });
+		
 		// Send the data using get
 		var posting = $.get( "action", { action: act, seconds: secs }
 							, function(data) { 
-					        	$.growl({ title: "Test", message: data });
+					        	
 					        	
 								var tick_interval = 1;
 								var tick_increment = 100/secs;
