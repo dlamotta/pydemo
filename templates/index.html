@@ -90,28 +90,30 @@
 		event.preventDefault();
 	    var act = $("input[name='radio']:checked").val();
 		var secs = $( "#seconds" ).val();
-		$.growl({ title: "Performing", message: " '"+act+"' for '"+secs+"' seconds" });
 
-		// Send the data using get
-		var posting = $.get( "action", { action: act, seconds: secs });
-		
-		var tick_interval = 1;
-		var tick_increment = 100/secs;
-		var tick_function = function() {
-		    var value = $("#progressbar").progressbar("option", "value");
-		    value += tick_increment;
-		    $("#progressbar").progressbar("option", "value", value);
-		    if (value <= 100) {
-		        window.setTimeout(tick_function, tick_interval * 1000);
-		        
-		    } else {
-		        $.growl({ title: "Complete", message: "All done" });
-		        $('#progressbar').progressbar('option', 'value', 0);
-		    }
-		};
-		window.setTimeout(tick_function, tick_interval * 1000);
-		 
-	});
+		var xhr = $.get("action", { action: act, seconds: secs }, function(response, status, xhr) {
+		    $.growl({ title: status, message: response });
+				if (status == 'success') {	
+					var tick_interval = 1;
+					var tick_increment = 100/secs;
+					var tick_function = function() {
+					    var value = $("#progressbar").progressbar("option", "value");
+					    value += tick_increment;
+					    $("#progressbar").progressbar("option", "value", value);
+					    if (value <= 100) {
+					        window.setTimeout(tick_function, tick_interval * 1000);
+					        
+					    } else {
+					        $.growl({ title: "Complete", message: "All done" });
+					        $('#progressbar').progressbar('option', 'value', 0);
+					    }
+					};
+					window.setTimeout(tick_function, tick_interval * 1000);
+				}; // end status if		    
+
+		  }); // end get		
+	
+	}); // end click
 	
 	//$( "#results" ).toggle( "highlight" );
 	

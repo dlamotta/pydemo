@@ -89,7 +89,7 @@ def action(request):
     msg = ' '
     if request.method == 'GET':
         if 'action' in request.GET and 'seconds' in request.GET:
-            msg = "Processed '%s' for '%s' seconds"%(request.GET['action'], request.GET['seconds'])
+            msg = "Simulating '%s' for '%s' seconds"%(request.GET['action'], request.GET['seconds'])
             if request.GET['action'] == 'hang':
                 out = out + os.popen("kill -s STOP 1").read()
                 print (out)
@@ -97,7 +97,7 @@ def action(request):
                 out = out + os.popen("kill -s CONT 1").read()
                 print (out)
                 
-            elif request.GET['action'] == 'kill':
+            elif request.GET['action'] == 'suicide':
                 out = out + os.popen("kill 1").read()
                 print (out)
                 
