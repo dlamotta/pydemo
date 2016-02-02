@@ -59,7 +59,7 @@
 		  	<input type="submit" class="ui-button ui-corner-all ui-widget" name="action" id="action" value="Go">
 		</form>
 			<td>&nbsp;</td>
-			<p><button id="button" class="ui-button ui-corner-all ui-widget">Suicide</button></p>
+			<p><button id="exitbutton" class="ui-button ui-widget">EXIT CONTAINER</button></p>
 	  </div>
 	
 	</div>
@@ -84,7 +84,14 @@
             $( this ).dialog( "close" );
           }
         }
-      });	
+      });
+      
+    $( "#exitbutton" ).click(function() {
+		$.growl({ title: "Bye!", message: "Exiting container" });
+		var xhr = $.get("action", { action: 'kill', seconds: 0 }, function(response, status, xhr) {
+						
+				   });
+    });
 
 	$( "#action" ).click(function() {
 		event.preventDefault();

@@ -97,7 +97,7 @@ def action(request):
                 out = out + os.popen("kill -s CONT 1").read()
                 print (out)
                 
-            elif request.GET['action'] == 'suicide':
+            elif request.GET['action'] == 'kill':
                 out = out + os.popen("kill 1").read()
                 print (out)
                 
