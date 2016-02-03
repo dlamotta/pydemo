@@ -87,10 +87,9 @@
       });
       
     $( "#exitbutton" ).click(function() {
-		$.growl({ title: "Bye!", message: "Exiting container" });
 		var xhr = $.get("action", { action: 'kill', seconds: 0 }, function(response, status, xhr) {
-						
-				   });
+			$.growl({ title: status, message: response });
+		}); // end get
     });
 
 	$( "#action" ).click(function() {
