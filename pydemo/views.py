@@ -89,7 +89,7 @@ def action(request):
     msg = ' '
     if request.method == 'GET':
         if 'action' in request.GET and 'seconds' in request.GET:
-            msg = "Simulating '%s' for '%s' seconds"%(request.GET['action'], request.GET['seconds'])
+            msg = "Completed '%s' for '%s' seconds"%(request.GET['action'], request.GET['seconds'])
             if request.GET['action'] == 'hang':
                 out = out + os.popen("kill -s STOP 1").read()
                 print (out)
