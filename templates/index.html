@@ -84,13 +84,13 @@
             $( this ).dialog( "close" );
           }
         }
-      });
+      }); // end dialog
       
     $( "#exitbutton" ).click(function() {
 		var xhr = $.get("action", { action: 'kill', seconds: 0 }, function(response, status, xhr) {
 			$.growl({ title: status, message: response });
 		}); // end get
-    });
+    }); // end exitbutton
 
 	$( "#action" ).click(function() {
 		event.preventDefault();
@@ -118,9 +118,7 @@
 		    $.growl({ title: status, message: response });
 		  }); // end get		
 	
-	}); // end click
-	
-	//$( "#results" ).toggle( "highlight" );
+	}); // end action click
 	
     $( "#progressbar" ).progressbar({
       value: 0
