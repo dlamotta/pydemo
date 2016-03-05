@@ -97,6 +97,12 @@
 	    var act = $("input[name='radio']:checked").val();
 		var secs = $( "#seconds" ).val();
 		
+		var URL = location.href;
+		alert(URL);
+	    $.growl({ title: "Requesting", message: "'"+act+"' for '"+secs+"' seconds" });
+	    $.ajax({url: URL, success: function(result){
+	    }});			
+		
 		var tick_interval = 1;
 		var tick_increment = 100/secs;
 		var tick_function = function() {
@@ -111,11 +117,7 @@
 		    }
 		};
 		window.setTimeout(tick_function, tick_interval * 1000);
-		var URL = location.href;
-	    $.growl({ title: "Requesting", message: "'"+act+"' for '"+secs+"' seconds" });
-	    $.ajax({url: URL, success: function(result){
-	    	alert(status+"$PYDEMO_SERVICE_HOST");
-	    }});	    
+    
 	}); // end action click
 	
     $( "#progressbar" ).progressbar({
