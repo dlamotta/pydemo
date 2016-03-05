@@ -96,12 +96,10 @@
 		event.preventDefault();
 	    var act = $("input[name='radio']:checked").val();
 		var secs = $( "#seconds" ).val();
-		
 		var URL = location.href;
-		alert(URL);
+		
 	    $.growl({ title: "Requesting", message: "'"+act+"' for '"+secs+"' seconds" });
-	    $.ajax({url: URL, success: function(result){
-	    }});			
+	    $.ajax({url: URL, success: function(result){}});			
 		
 		var tick_interval = 1;
 		var tick_increment = 100/secs;
