@@ -88,7 +88,8 @@
       
     $( "#exitbutton" ).click(function() {
 		var xhr = $.get("action", { action: 'kill', seconds: 0 }, function(response, status, xhr) {
-			$.growl({ title: status, message: response });
+			$.growl({ title: status+"$PYDEMO_SERVICE_HOST", message: 'test' });
+		
 		}); // end get
     }); // end exitbutton
 
