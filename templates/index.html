@@ -114,7 +114,7 @@
 
 	    $.growl({ title: "Requesting", message: "'"+act+"' for '"+secs+"' seconds" });
 
-		var xhr = $.get("action", { action: act, seconds: secs }, function(response, status, xhr) {
+		var xhr = $.get("pydemo-demo.apps.ose.nicknach.net/action", { action: act, seconds: secs }, function(response, status, xhr) {
 		    $.growl({ title: status, message: response });
 		  }); // end get
 	
