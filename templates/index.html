@@ -100,7 +100,7 @@
 		var URL = document.URL;
 	    $.growl({ title: "Requesting", message: "'"+act+"' for '"+secs+"' seconds" });
 		 $.ajax({url: URL+'action/', data, success: function(result){
-        	alert(result);
+        	$.growl({ title: , message: result });
     	}});
 		
 		var tick_interval = 1;

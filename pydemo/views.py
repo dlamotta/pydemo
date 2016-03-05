@@ -35,10 +35,13 @@ def env(request):
                 "draw": 1,
                 "recordsTotal": 0,
                 "recordsFiltered": 0,
-                "data": []
+                "data": [],
+                "extra": ''
                 }
     
     for key, value in os.environ.items():
+        if key == 'PYDEMO_SERVICE_HOST':
+            ret_dict['extra'] = value[:80]
         ret_dict['data'].append((key[:30], value[:80]))
         ret_dict['recordsTotal'] += 1
     
