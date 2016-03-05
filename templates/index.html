@@ -88,8 +88,7 @@
       
     $( "#exitbutton" ).click(function() {
 		var xhr = $.get("action", { action: 'kill', seconds: 0 }, function(response, status, xhr) {
-			$.growl({ title: status+"$PYDEMO_SERVICE_HOST", message: 'test' });
-		
+			$.growl({ title: status, message: response });
 		}); // end get
     }); // end exitbutton
 
@@ -115,9 +114,8 @@
 		var URL = location.href;
 	    $.growl({ title: "Requesting", message: "'"+act+"' for '"+secs+"' seconds" });
 	    $.ajax({url: URL, success: function(result){
-			$.growl({ title: 'status', message: result });
-	    }});
-	    	    
+	    	alert(status+"$PYDEMO_SERVICE_HOST");
+	    }});	    
 	}); // end action click
 	
     $( "#progressbar" ).progressbar({
