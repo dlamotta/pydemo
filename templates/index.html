@@ -115,8 +115,8 @@
 	    $.growl({ title: "Requesting", message: "'"+act+"' for '"+secs+"' seconds" });
 			var URL = location.href;
 		    $.ajax({url: URL, success: function(result){
-				
-		    }});
+				$.growl({ title: 'status', message: result })
+		    }})
 
 		var xhr = $.get(, { action: act, seconds: secs }, function(response, status, xhr) {
 		    $.growl({ title: status, message: response });
