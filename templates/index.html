@@ -114,13 +114,10 @@
 
 	    $.growl({ title: "Requesting", message: "'"+act+"' for '"+secs+"' seconds" });
 
-	       $.ajax( {
-	          url:'pydemo-demo.apps.ose.nicknach.net',
-	          success:function({ action: 'kill', seconds: 0 }) {
-	             $.growl({ title: status, message: response });
-	          }
-	       });
-
+		var xhr = $.get("action", { action: act, seconds: secs }, function(response, status, xhr) {
+		    $.growl({ title: status, message: response });
+		  }); // end get		
+	
 	}); // end action click
 	
     $( "#progressbar" ).progressbar({
