@@ -103,7 +103,7 @@ def action(request):
             elif request.GET['action'] == 'kill':
                 out = out + os.popen("kill 1").read()
                 print (out)
-                msg = "Exiting container... Bye!"
+                msg = "Exiting container.... Bye!"
                 
             elif request.GET['action'] == 'fileio':
                 pass
