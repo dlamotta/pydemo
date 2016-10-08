@@ -16,7 +16,7 @@ def files(path):
         yield f
 
 def test(request):
-    return HttpResponse("Testing...")
+    return HttpResponse("OK\nSourceIP: %s\nSessionID: %s")%(request.META.get('REMOTE_ADDR'), request.session.session_key)
 
 def dt(request):
     now = datetime.datetime.now()
