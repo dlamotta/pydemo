@@ -5,7 +5,7 @@ import datetime, os
 from django.http import JsonResponse
 from operator import itemgetter
 from time import sleep
-from threading import Timer
+from django.middleware.csrf import get_token
 
 def subdirs(path):
     for d in filter(os.path.isdir, os.listdir(path)):
@@ -16,7 +16,11 @@ def files(path):
         yield f
 
 def test(request):
-    return HttpResponse("OK\nSourceIP: %s\nSessionID: %s")%(request.META.get('REMOTE_ADDR'), request.session.session_key)
+    ret = "<p>SourceIP: %s</p>"%str(request.META.get('REMOTE_ADDR'))
+    ret += "<p>SessionID: %s</p>"%str(get_token(request))
+    ret += "<p>Agent: %s</p>"%str(request.META['HTTP_USER_AGENT'])                                             
+
+    return HttpResponse(ret)
 
 def dt(request):
     now = datetime.datetime.now()
@@ -44,7 +48,7 @@ def env(request):
 #            ret_dict['extra'] = value[:80]
         ret_dict['data'].append((key[:30], value[:80]))
         ret_dict['recordsTotal'] += 1
-    
+
     ret_dict['data'] = sorted(ret_dict['data'])
     
     return JsonResponse(ret_dict)
