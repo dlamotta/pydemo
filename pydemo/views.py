@@ -91,7 +91,7 @@ def file(request):
 
     return HttpResponse(html)
 
-def action(request):
+def verb(request):
     out = ' '
     msg = ' '
     if request.method == 'GET':

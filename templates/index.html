@@ -50,7 +50,7 @@
 		    	<input type="radio" value="load" id="load" name="radio" checked="checked"><label for="load">Load</label>
 		    	<input type="radio" value="fileio" id="fileio" name="radio"><label for="fileio">File IO</label>
 		    	<td>&nbsp;</td>
-		    	<input type="number" min="1" max="30" id="seconds" name="seconds" value="15"><label for="seconds">  Seconds  </label>
+		    	<input type="number" min="1" max="30" id="seconds" name="seconds" value="29"><label for="seconds">  Seconds  </label>
 		    	<td>&nbsp;</td>
 		    	<td>&nbsp;</td> <p><div style="width:20%" id="progressbar"></div></p>
 		    	<p></p>
@@ -99,7 +99,7 @@
 		data = { action: act, seconds: secs };
 		var URL = document.URL;
 	    $.growl({ title: "Requesting", message: "'"+act+"' for '"+secs+"' seconds" });
-		 $.ajax({url: URL+'action/', data, success: function(result){
+		 $.ajax({url: URL+'verb/', data, success: function(result){
         	$.growl({ title: 'success' , message: result });
     	}});
 		

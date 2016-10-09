@@ -16,6 +16,6 @@ urlpatterns = [
     url(r'^env', views.env),
     url(r'^proc', views.proc),
     url(r'^file', views.file),
-    url(r'^action', views.action),
+    url(r'^verb', views.verb),
     
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + [url(r'^.+', views.none)]
