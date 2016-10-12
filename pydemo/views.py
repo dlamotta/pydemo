@@ -18,16 +18,19 @@ def files(path):
 def test(request):
     ret = "<p>SourceIP: %s</p>"%str(request.META.get('REMOTE_ADDR'))
     ret += "<p>SessionID: %s</p>"%str(get_token(request))
-    ret += "<p>Agent: %s</p>"%str(request.META['HTTP_USER_AGENT'])                                             
+    ret += "<p>Agent: %s</p>"%str(request.META['HTTP_USER_AGENT'])
+                                               
     return HttpResponse(ret)
 
 def dt(request):
     now = datetime.datetime.now()
     html = "<html><body>%s</body></html>" % now
+    
     return HttpResponse(html)
 
 def none(request):
     html = "<html><body>Sorry, nothing found for that URL</body></html>"
+    
     return HttpResponseNotFound(html)
 
 def index(request):
