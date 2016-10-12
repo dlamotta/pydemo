@@ -19,7 +19,6 @@ def test(request):
     ret = "<p>SourceIP: %s</p>"%str(request.META.get('REMOTE_ADDR'))
     ret += "<p>SessionID: %s</p>"%str(get_token(request))
     ret += "<p>Agent: %s</p>"%str(request.META['HTTP_USER_AGENT'])                                             
-
     return HttpResponse(ret)
 
 def dt(request):
