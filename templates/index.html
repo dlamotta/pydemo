@@ -87,7 +87,7 @@
       }); // end dialog
       
     $( "#exitbutton" ).click(function() {
-		var xhr = $.get("action", { action: 'kill', seconds: 0 }, function(response, status, xhr) {
+		var xhr = $.get("verb", { action: 'kill' }, function(response, status, xhr) {
 			$.growl({ title: status, message: response });
 		}); // end get
     }); // end exitbutton

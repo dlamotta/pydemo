@@ -104,11 +104,6 @@ def verb(request):
                 out = out + os.popen("kill -s CONT 1").read()
                 print (out)
                 
-            elif request.GET['action'] == 'kill':
-                out = out + os.popen("kill 1").read()
-                print (out)
-                msg = "Exiting container.... Bye!"
-                
             elif request.GET['action'] == 'fileio':
                 pass
             
@@ -119,6 +114,11 @@ def verb(request):
                         break
                     else:
                         x = 987239478234879 * 98723947823947
+                        
+        elif request.GET['action'] == 'kill':
+            out = out + os.popen("kill 1").read()
+            print (out)
+            msg = "exiting container.... Bye!"
                 
     return HttpResponse(msg+"\n"+out)
 
