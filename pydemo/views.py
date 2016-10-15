@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
-import datetime, os
+import datetime, os, string, random
 from django.http import JsonResponse
 from operator import itemgetter
 from time import sleep
@@ -107,7 +107,15 @@ def verb(request):
                 print (out)
                 
             elif request.GET['action'] == 'fileio':
-                pass
+                endTime = datetime.datetime.now() + datetime.timedelta(seconds=int(request.GET['seconds']))
+                while True:
+                    if datetime.datetime.now() >= endTime:
+                        os.popen("rm -rf testing.txt")
+                        break
+                    else:
+                        with open('testing.txt', 'a') as out:
+                            randtxt = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(254))
+                            out.write(randtxt + '\n')
             
             elif request.GET['action'] == 'load':
                 endTime = datetime.datetime.now() + datetime.timedelta(seconds=int(request.GET['seconds']))
