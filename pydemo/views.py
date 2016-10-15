@@ -100,10 +100,7 @@ def verb(request):
         if 'action' in request.GET and 'seconds' in request.GET:
             msg = "Completed '%s' for '%s' seconds"%(request.GET['action'], request.GET['seconds'])
             if request.GET['action'] == 'hang':
-                out = out + os.popen("kill -s STOP 1").read()
-                print (out)
-                sleep(int(request.GET['seconds']))
-                out = out + os.popen("kill -s CONT 1").read()
+                out = out + os.popen("kill -s STOP 1 && sleep %s && kill -s CONT 1"%request.GET['seconds']).read()
                 print (out)
                 
             elif request.GET['action'] == 'fileio':
