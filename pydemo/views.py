@@ -114,7 +114,7 @@ def verb(request):
                         break
                     else:
                         with open('testing.txt', 'a') as out:
-                            randtxt = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(254))
+                            randtxt = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(200))
                             out.write(randtxt + '\n')
             
             elif request.GET['action'] == 'load':
